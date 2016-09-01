@@ -1,8 +1,14 @@
-input[type="text"]{
+input[type="text"] {
 
   display: block;
   color:black;
 height: 3em;
+width: 100%;
+}
+
+label{
+
+ color: black;
 }
 .nav-tabs {
     border-bottom: 1px solid #151313 !important;
