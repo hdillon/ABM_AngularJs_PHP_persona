@@ -18,7 +18,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller : 'controlPersona'
             })
   
-         .state('persona.menu', {
+      .state('persona.menu', {
                 url: '/menu',
                 views: {
                     'contenido': {
@@ -27,7 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
-         .state('persona.alta', {
+      .state('persona.alta', {
                 url: '/alta',
                 views: {
                     'contenido': {
@@ -36,7 +36,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
-         .state('persona.grilla', {
+      .state('persona.grilla', {
                 url: '/grilla',
                 views: {
                     'contenido': {
