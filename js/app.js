@@ -1,12 +1,73 @@
 
-var app = angular.module('ABMangularPHP', []);
+var app = angular.module('ABMangularPHP', ['ui.router']);
 
+app.config(function($stateProvider, $urlRouterProvider) {
+  
+
+  $stateProvider
+
+      .state('inicio', {
+                url : '/inicio',
+                templateUrl : 'vistas/inicio.html',
+                controller : 'controlInicio'
+            })
+      .state('persona', {
+                url : '/persona',
+                abstract:true,
+                templateUrl : 'vistas/abstractaPersona.html',
+                controller : 'controlPersona'
+            })
+  
+         .state('persona.menu', {
+                url: '/menu',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/personaMenu.html',
+                        controller : 'controlPersonaMenu'
+                    }
+                }
+            })
+         .state('persona.alta', {
+                url: '/alta',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/personaAlta.html',
+                        controller : 'controlPersonaAlta'
+                    }
+                }
+            })
+         .state('persona.grilla', {
+                url: '/grilla',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/personaGrilla.html',
+                        controller : 'controlPersonaGrilla'
+                    }
+                }
+            })
+
+
+   
+   $urlRouterProvider.otherwise('/inicio');
+});
+
+app.controller('controlPersonaMenu', function($scope, $http) {
+  $scope.DatoTest="**Menu**";
+});
 
 app.controller('controlMenu', function($scope, $http) {
   $scope.DatoTest="**Menu**";
 });
+app.controller('controlInicio', function($scope, $http) {
+  $scope.DatoTest="**Menu**";
+  $scope.titulo="Inicio y presentacion de la WEB"
+});
 
 
+app.controller('controlPersona', function($scope, $http) {
+  $scope.DatoTest="**Menu**";
+  $scope.titulo="Inicio y presentacion de la WEB"
+});
 app.controller('controlAlta', function($scope, $http) {
   $scope.DatoTest="**alta**";
 
