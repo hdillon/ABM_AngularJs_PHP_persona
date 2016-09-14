@@ -1,0 +1,13 @@
+
+    <div class="Frm animated bounceInLeft">
+      <form class="" name="myForm">
+        <label>Login</label><br><br>
+        <input type="email" id="correo" name="email" ng-model="email" placeholder="Ingrese su email" value=""><br>
+        <input type="password" id="clave" minlength="7" ng-model="password" placeholder="clave" required="true" value=""><br>
+        <button class="button-green" id="login" ng-click="Login()" ng-disabled="myForm.$invalid"><span>Login </span></button>
+      </form>
+    </div>
+    <h1>Estado: {{myForm.$valid}}</h1>
+
+    
+  

@@ -66,8 +66,8 @@ otra manera es con el state.go!
 TP: El index vamos a tener que incorporar un nuevo bootstrap template 
 vamos a tener 3 vistas abstractas (una ya la tenemos "persona" a la que le tenemos que agregar las funcionalidades de ABM .. al igual que con ajax pero con $http).
 La otra vista va a tener "login y registro" que se puede dividir en 2 html (login = dos input text y un boton -- el registro 3= mail pass, pass2 y registrar).
-los botones logear y registrar tienen que disparar un obj json al los controladores.
-el control login va a consultar a la basi si esxiste y el registrar va a guardar el usuario.
+los botones logear y registrar tienen que disparar un obj json a los controladores.
+el control login va a consultar a la base si esxiste y el registrar va a guardar el usuario.
 Puedo opcionalmente tener el mismo template para login y registro cada uno con su controiller o un solo controler para los 2 templates.
 
 La tercer vista va a ser una "abstracta de juegos"- hasy que agarrar los juegos en angular,incluir los html en el sitio y apuntarlas con el rooteo.

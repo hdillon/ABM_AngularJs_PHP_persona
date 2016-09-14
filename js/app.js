@@ -45,10 +45,41 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
+      .state('usuario', {
+                url : '/usuario',
+                abstract:true,
+                templateUrl : 'vistas/abstractaUsuario.html',
+                controller : 'controlUsuario'
+            })
+      .state('usuario.menu', {
+                url: '/usermenu',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/usuarioMenu.html',
+                        controller : 'controlUsuarioMenu'
+                    }
+                }
+            })
+      .state('usuario.login', {
+                url: '/login',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/usuarioLogin.html',
+                        controller : 'controlUsuarioLogin'
+                    }
+                }
+            })
+      .state('usuario.registrarse', {
+                url: '/registrarse',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/usuarioRegistrarse.html',
+                        controller : 'controlUsuarioRegistrarse'
+                    }
+                }
+            })
 
-
-   
-   $urlRouterProvider.otherwise('/inicio');
+             $urlRouterProvider.otherwise('/inicio');
 });
 
 app.controller('controlPersonaMenu', function($scope, $http) {
@@ -68,7 +99,7 @@ app.controller('controlPersona', function($scope, $http) {
   $scope.DatoTest="**Menu**";
   $scope.titulo="Inicio y presentacion de la WEB"
 });
-app.controller('controlAlta', function($scope, $http) {
+app.controller('controlPersonaAlta', function($scope, $http) {
   $scope.DatoTest="**alta**";
 
 //inicio las variables
@@ -101,8 +132,27 @@ app.controller('controlAlta', function($scope, $http) {
   }
 });
 
+app.controller('controlUsuario', function($scope, $http) {
+  $scope.DatoTest="**Menu**";
+  $scope.titulo="Inicio y presentacion de la WEB"
+});
 
-app.controller('controlGrilla', function($scope, $http) {
+app.controller('controlUsuarioMenu', function($scope, $http) {
+  $scope.DatoTest="**Menu**";
+  $scope.titulo="Inicio y presentacion de la WEB"
+});
+
+app.controller('controlUsuarioLogin', function($scope, $http) {
+  $scope.DatoTest="**Menu**";
+  $scope.titulo="Inicio y presentacion de la WEB"
+});
+
+app.controller('controlUsuarioRegistrarse', function($scope, $http) {
+  $scope.DatoTest="**Menu**";
+  $scope.titulo="Inicio y presentacion de la WEB"
+});
+
+app.controller('controlPersonaGrilla', function($scope, $http) {
   	$scope.DatoTest="**grilla**";
  	
 

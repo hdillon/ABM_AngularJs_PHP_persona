@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Form Alta</title>
+    <link href="css/estilos.css" rel="stylesheet" type="text/css">
+    <link href="css/animaciones.css" rel="stylesheet" type="text/css">
+    <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+</head>
+<body ng-app="ModuloAngular" ng-controller="controlAlta">
+    <div class="Frm animated bounceInLeft">
+      <form class=""  name="myForm" enctype="multipart/form-data">
+        <label id="titulo">Registro</label><br>
+        <input type="text" id="nombre" name="nombre" ng-model="usuario.nombre" placeholder="Ingrese su nombre" required="true"><br>
+        <input type="text" id="apellido" name="apellido" ng-model="usuario.apellido" placeholder="Ingrese su apellido" required="true"><br>
+        <input type="number" id="edad" name="edad" ng-model="usuario.edad" min="18" max="99" placeholder="Ingrese su edad" required="true"><br>
+        Sexo: 
+        <input type="radio" name="sexo" id="m" ng-model="usuario.sexo" value="m"> M
+        <input type="radio" name="sexo" id="f" ng-model="usuario.sexo" value="f"> F<br>
+        <input type="number" id="dni" name="dni" ng-model="usuario.dni" placeholder="Ingrese su dni" required="true"><br>
+        <input type="email" id="email" name="email" ng-model="usuario.email" placeholder="Ingrese su email" required="true"><br>
+        <select ng-model="usuario.estado">
+          <option value="estado1">Casado</option>
+          <option value="estado2">Soltero</option>
+        </select><br> 
+        <input type="date" id="fechaNac" name="fechaNac" ng-model="usuario.fechaNac" placeholder="Fecha Nac. yyyy-mm-dd" onkeyup="
+  var date = this.value;
+  if (date.match(/^\d{4}$/) !== null) {
+     this.value = date + '-';
+  } else if (date.match(/^\d{4}\-\d{2}$/) !== null) {
+     this.value = date + '-';
+  }" maxlength="10"><br>
+        <input type="password" id="password" ng-model="usuario.password" placeholder="Ingrese su clave" value=""><br>
+        <input type="password" id="password2" ng-model="usuario.password2" placeholder="Repita su clave" value=""><br>
+        Lenguajes: 
+        <input type="checkbox" ng-model="usuario.lenguajeJava" name="java" value="java"> Java
+        <input type="checkbox" ng-model="usuario.lenguajeC" name="c" value="c" checked> C#
+        <input type="checkbox" ng-model="usuario.lenguajePython" name="python" value="python"> Python<br><br>
+        <button  class="button-green" name="login" id="login" ng-disabled="myForm.$invalid || usuario.password!=usuario.password2" ng-click="Registrarse()"><span>Registrarse </span></button>
+      </form>
+    </div>
+
+    <h1>Estado:{{myForm.$valid}}</h1>
+</body>
+</html>
+
+
