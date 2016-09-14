@@ -1,15 +1,7 @@
-<html>
-<head>
-	<title>Form Alta</title>
-    <link href="css/estilos.css" rel="stylesheet" type="text/css">
-    <link href="css/animaciones.css" rel="stylesheet" type="text/css">
-    <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
-    <script src="js/app.js" type="text/javascript"></script>
-</head>
-<body ng-app="ModuloAngular" ng-controller="controlAlta">
+
     <div class="Frm animated bounceInLeft">
       <form class=""  name="myForm" enctype="multipart/form-data">
-        <label id="titulo">Registro</label><br>
+        <label class="miEstilo" id="titulo">Registro</label><br>
         <input type="text" id="nombre" name="nombre" ng-model="usuario.nombre" placeholder="Ingrese su nombre" required="true"><br>
         <input type="text" id="apellido" name="apellido" ng-model="usuario.apellido" placeholder="Ingrese su apellido" required="true"><br>
         <input type="number" id="edad" name="edad" ng-model="usuario.edad" min="18" max="99" placeholder="Ingrese su edad" required="true"><br>
@@ -40,7 +32,4 @@
     </div>
 
     <h1>Estado:{{myForm.$valid}}</h1>
-</body>
-</html>
-
 

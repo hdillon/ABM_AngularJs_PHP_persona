@@ -26,17 +26,17 @@
 						lenguajes de programacion(checkbox): c,c#, javaScript,PHP,vb.Net
 
 				-->
-				<label  >Apellido : {{FormIngreso.$invalid}}</label>
-				<input type="text" name="apellido" ng-model="persona.apellido" placeholder="ingrese apellido" value=""  required/>
+				<label  >Apellido : {{FormIngreso.$invalid}}</label><br>
+				<input type="text" name="apellido" ng-model="persona.apellido" placeholder="ingrese apellido" value=""  required/><br>
 				<span id="lblApellido" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*
-				</span>
+				</span><br>
 
 				<label  >Nombre:</label>
-				<input type="text"  ng-model="persona.nombre" placeholder="ingrese nombre" value="" /> <span id="lblNombre" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span>
+				<input type="text"  ng-model="persona.nombre" placeholder="ingrese nombre" value="" /> <span id="lblNombre" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span><br>
 
 				<label  >edad:</label>
 				<input type="text"  ng-model="persona.edad" placeholder="ingrese edad" value=""     /> 
-				<span id="lblDni" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span>
+				<span id="lblDni" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span><br>
 
 
 				<label  >sexo:</label><br>
@@ -49,11 +49,11 @@
 
 				<label  >Dni:</label>
 				<input type="text" name="dni" ng-model="persona.dni" placeholder="ingrese dni" value=""     /> 
-				<span id="lblDni" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span>
+				<span id="lblDni" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span><br>
 
 				<label  >mail:</label>
 				<input type="email"  ng-model="persona.correo" placeholder="ingrese correo electronico" /> 
-				<span ng-if="">*</span>
+				<span ng-if="">*</span><br>
 
 				<p style='color: black;'>	{{ persona.nombre + persona.apellido }}*El DNI nosss se modificar.</p> 
 			
