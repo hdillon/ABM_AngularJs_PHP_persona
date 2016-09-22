@@ -23,6 +23,7 @@
     "bootstrap": "^3.3.7",
     "components-font-awesome": "^4.6.3",
     "angular-ui-router": "0.3.1",
-    "estilos": "https://github.com/octaviovillegas/estilos.git"
+    "estilos": "https://github.com/octaviovillegas/estilos.git",
+    "satellizer": "^0.15.5"
   }
 }

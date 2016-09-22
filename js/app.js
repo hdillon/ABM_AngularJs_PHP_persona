@@ -1,5 +1,5 @@
 
-var app = angular.module('ABMangularPHP', ['ui.router']);
+var app = angular.module('ABMangularPHP', ['ui.router', 'satellizer']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
   
@@ -143,8 +143,13 @@ app.controller('controlUsuarioMenu', function($scope, $http) {
 });
 
 app.controller('controlUsuarioLogin', function($scope, $http) {
-  $scope.DatoTest="**Menu**";
-  $scope.titulo="Inicio y presentacion de la WEB"
+  
+
+$scope.Login = function(){
+
+  alert("asd");
+}
+
 });
 
 app.controller('controlUsuarioRegistrarse', function($scope, $http) {
