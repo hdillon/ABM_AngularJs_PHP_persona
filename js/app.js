@@ -96,6 +96,12 @@ app.controller('controlMenu', function($scope, $http) {
 app.controller('controlInicio', function($scope, $http) {
   $scope.DatoTest="**Menu**";
   $scope.titulo="Inicio y presentacion de la WEB"
+  //TENGO QUE VALIDAR SI ESTA AUTENTICADO
+  if($auth.isAuthenticated())
+    //muestro los botones para que ingrese al sistema
+  else
+    //le pido que se loguee
+  
 });
 
 
@@ -152,21 +158,26 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
   $scope.usuario.email = "algo@mail";
   $scope.usuario.password = "claveju66i6u7";
 
-$scope.Login = function(){
+  if($auth.isAuthenticated())
+    console.info("token", $auth.getPayload());
+  else
+    console.info("no token");
 
-  //Esto es una llamada equivalente a $http
-  $auth.login($scope.usuario)
-  .then(function(response) {
-      console.info("correcto", response);
-    // Redirect user here after a successful log in.
-  })
-  .catch(function(response) {
-      console.info("incorrecto", response);
-    // Handle errors here, such as displaying a notification
-    // for invalid email and/or password.
-  });
-  
-}
+  $scope.Login = function(){
+
+    //Esto es una llamada equivalente a $http
+    $auth.login($scope.usuario)
+    .then(function(response) {
+        console.info("correcto", response);
+      // Redirect user here after a successful log in.
+    })
+    .catch(function(response) {
+        console.info("incorrecto", response);
+      // Handle errors here, such as displaying a notification
+      // for invalid email and/or password.
+    });
+    
+  }
 
 });
 
