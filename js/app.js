@@ -1,8 +1,12 @@
 
 var app = angular.module('ABMangularPHP', ['ui.router', 'satellizer']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
   
+  $authProvider.loginUrl = 'ABM_AngularJs_PHP_persona/PHP/auth.php'; //Ruta del archivo auth que esta en jwt
+  $authProvider.tokenName = 'ElNombreDelToken'; //nombre largo
+  $authProvider.tokenPrefix = 'Aplicacion'; //sarasa
+  $authProvider.authHeader = 'data';
 
   $stateProvider
 
@@ -142,12 +146,26 @@ app.controller('controlUsuarioMenu', function($scope, $http) {
   $scope.titulo="Inicio y presentacion de la WEB"
 });
 
-app.controller('controlUsuarioLogin', function($scope, $http) {
-  
+app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
+
+  $scope.usuario = {};
+  $scope.usuario.email = "algo@mail";
+  $scope.usuario.password = "claveju66i6u7";
 
 $scope.Login = function(){
 
-  alert("asd");
+  //Esto es una llamada equivalente a $http
+  $auth.login($scope.usuario)
+  .then(function(response) {
+      console.info("correcto", response);
+    // Redirect user here after a successful log in.
+  })
+  .catch(function(response) {
+      console.info("incorrecto", response);
+    // Handle errors here, such as displaying a notification
+    // for invalid email and/or password.
+  });
+  
 }
 
 });
