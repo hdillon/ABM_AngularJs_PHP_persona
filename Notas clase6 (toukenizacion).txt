@@ -53,4 +53,5 @@ comando: bower install satellizer --save
 
 Tomar datos de php: EJEMPLO: $datosDelModeloPorPOST = file_get_contents('php://input');
 
+CONTROLAR SESION DE USUARIO:
 Se puede verificar la utilización del Token desde "Inspeccionar elemento" (F12) - Resources - Local Storage, con el fin de validar si está el user logueado o no, para cual se usa la variable: $auth.isAuthenticated().

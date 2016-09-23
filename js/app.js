@@ -1,9 +1,9 @@
 
-var app = angular.module('ABMangularPHP', ['ui.router', 'satellizer']);
+var app = angular.module('ABMangularPHP', ['ui.router', 'satellizer', 'angularFileUpload']);
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
   
-  $authProvider.loginUrl = 'ABM_AngularJs_PHP_persona/PHP/auth.php'; //Ruta del archivo auth que esta en jwt
+  $authProvider.loginUrl = 'ABM_AngularJs_PHP_persona/PHP/auth.php'; //Ruta del archivo auth que esta en jwt y direcciona a PHP
   $authProvider.tokenName = 'ElNombreDelToken'; //nombre largo
   $authProvider.tokenPrefix = 'Aplicacion'; //sarasa
   $authProvider.authHeader = 'data';
@@ -95,12 +95,12 @@ app.controller('controlMenu', function($scope, $http) {
 });
 app.controller('controlInicio', function($scope, $http) {
   $scope.DatoTest="**Menu**";
-  $scope.titulo="Inicio y presentacion de la WEB"
+  $scope.titulo="Inicio y presentacion de la WEB";
   //TENGO QUE VALIDAR SI ESTA AUTENTICADO
-  if($auth.isAuthenticated())
+/*  if($auth.isAuthenticated())
     //muestro los botones para que ingrese al sistema
   else
-    //le pido que se loguee
+    //le pido que se loguee*/
   
 });
 
@@ -161,7 +161,7 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
   if($auth.isAuthenticated())
     console.info("token", $auth.getPayload());
   else
-    console.info("no token");
+    console.info("no token", $auth.getPayload());
 
   $scope.Login = function(){
 
@@ -169,6 +169,12 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
     $auth.login($scope.usuario)
     .then(function(response) {
         console.info("correcto", response);
+
+        //CHEQUEO DE SESION ACTIVA O NO
+        if($auth.isAuthenticated())
+          console.info("token", $auth.getPayload());
+        else
+          console.info("no token", $auth.getPayload());
       // Redirect user here after a successful log in.
     })
     .catch(function(response) {
@@ -181,9 +187,40 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
 
 });
 
-app.controller('controlUsuarioRegistrarse', function($scope, $http) {
+app.controller('controlUsuarioRegistrarse', function($scope, $http, FileUploader) {
   $scope.DatoTest="**Menu**";
-  $scope.titulo="Inicio y presentacion de la WEB"
+  $scope.titulo="Inicio y presentacion de la WEB";
+
+  $scope.uploader=new FileUploader({url:'PHP/nexo.php'});
+  
+  $scope.uploader.onSuccessItem=function(item, response, status, headers)
+  {
+    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.persona}})
+    .then(function(respuesta) {       
+       //aca se ejetuca si retorno sin errores        
+     console.log(respuesta.data);
+     $state.go("persona.grilla");
+
+  },function errorCallback(response) {        
+      //aca se ejecuta cuando hay errores
+      console.log( response);           
+    });
+
+  console.info("Ya guardé el archivo.", item, response, status, headers);
+  };
+  $scope.Guardar=function(){
+    console.log($scope.uploader.queue);
+      if($scope.uploader.queue[0]!=undefined)
+      {
+        var nombreFoto = $scope.uploader.queue[0]._file.name;
+        $scope.persona.foto=nombreFoto;
+      }
+
+      $scope.uploader.uploadAll();
+      console.log("persona a guardar:");
+      console.log($scope.persona);
+  }
+
 });
 
 app.controller('controlPersonaGrilla', function($scope, $http) {

@@ -2,7 +2,7 @@
 include_once '../jwt/vendor/autoload.php';
 use \Firebase\JWT\JWT;
 
-$datosDelModeloPorPOST = file_get_contents('php://input');
+$datosDelModeloPorPOST = file_get_contents('php://input'); // Metodo para traer los datos de JS.
 $usuario = json_decode($datosDelModeloPorPOST);
 
 if ($usuario->email == 'algo@mail' && $usuario->password == 'claveju66i6u7'){
