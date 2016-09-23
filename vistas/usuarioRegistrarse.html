@@ -1,3 +1,9 @@
+<style>
+            .my-drop-zone { border: dotted 3px lightgray; }
+            .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+            .another-file-over-class { border: dotted 3px green; }
+            html, body { height: 100%; }
+</style>
 
     <div class="Frm animated bounceInLeft">
       <form class=""  name="myForm" enctype="multipart/form-data">
@@ -33,7 +39,14 @@
                     <h3>Select files</h3>
                     <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
                     Multiple
-                    <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+                    <!-- <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>-->
+
+                    <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                        <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
+                            <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
+                                Another drop zone with its own settings
+                            </div>
+                        </div>
 
                 </div>
 
