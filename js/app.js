@@ -105,9 +105,17 @@ app.controller('controlInicio', function($scope, $http) {
 });
 
 
-app.controller('controlPersona', function($scope, $http) {
-  $scope.DatoTest="**Menu**";
-  $scope.titulo="Inicio y presentacion de la WEB"
+app.controller('controlPersona', function($scope, $http, $auth) {
+   if(!$auth.isAuthenticated())
+   {
+    $scope.DatoTest="**NO TOKEN**";
+    $scope.titulo="Debe iniciar sesion";
+   }else{
+    $scope.DatoTest="**Menu**";
+    $scope.titulo="Inicio y presentacion de la WEB";
+   }
+    
+
 });
 app.controller('controlPersonaAlta', function($scope, $http) {
   $scope.DatoTest="**alta**";
@@ -187,19 +195,25 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
 
 });
 
-app.controller('controlUsuarioRegistrarse', function($scope, $http, FileUploader) {
+app.controller('controlUsuarioRegistrarse', function($scope, $http, FileUploader, $state) {
   $scope.DatoTest="**Menu**";
   $scope.titulo="Inicio y presentacion de la WEB";
+
+  $scope.usuario={};
+  $scope.usuario.nombre= "" ;
+  $scope.usuario.dni= "" ;
+  $scope.usuario.apellido= "" ;
+  $scope.usuario.foto="pordefecto.png";
 
   $scope.uploader=new FileUploader({url:'PHP/nexo.php'});
   
   $scope.uploader.onSuccessItem=function(item, response, status, headers)
   {
-    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.persona}})
+    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.usuario}})
     .then(function(respuesta) {       
        //aca se ejetuca si retorno sin errores        
-     console.log(respuesta.data);
-     $state.go("persona.grilla");
+     console.info("respuesta", respuesta.data);
+     $state.go("inicio");
 
   },function errorCallback(response) {        
       //aca se ejecuta cuando hay errores
@@ -208,17 +222,18 @@ app.controller('controlUsuarioRegistrarse', function($scope, $http, FileUploader
 
   console.info("Ya guardé el archivo.", item, response, status, headers);
   };
+
   $scope.Guardar=function(){
     console.log($scope.uploader.queue);
       if($scope.uploader.queue[0]!=undefined)
       {
         var nombreFoto = $scope.uploader.queue[0]._file.name;
-        $scope.persona.foto=nombreFoto;
+        $scope.usuario.foto=nombreFoto;
       }
 
       $scope.uploader.uploadAll();
-      console.log("persona a guardar:");
-      console.log($scope.persona);
+      console.log("usuario a guardar:");
+      console.log($scope.usuario);
   }
 
 });
@@ -227,7 +242,7 @@ app.controller('controlPersonaGrilla', function($scope, $http) {
   	$scope.DatoTest="**grilla**";
  	
 
-  $http.get(' http://www.mocky.io/v2/57c82b3a1200008404e769ad')
+  $http.get('http://www.mocky.io/v2/57c82b3a1200008404e769ad')
   .then(function(respuesta) {       
 
          $scope.ListadoPersonas = respuesta.data;

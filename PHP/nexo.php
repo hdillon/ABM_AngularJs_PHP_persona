@@ -2,6 +2,7 @@
 
 include "clases/Personas.php";
 // $_GET['accion'];
+//var_dump("entro!!");
 if ( !empty( $_FILES ) ) 
 {
     $temporal = $_FILES[ 'file' ][ 'tmp_name' ];
@@ -21,12 +22,9 @@ if(isset($_GET['accion']))
 		$arrayJson = json_encode($respuesta);
 		echo  $arrayJson;
 	}
-
-
-	
-
 }
-else{
+
+else{//Si es un post entra por el else!
 //var_dump($_REQUEST);
 
 
@@ -45,11 +43,6 @@ else{
 
 	/*echo "<br>";
 	var_dump($_POST);*/
-
-
-
-
-
 	
 	/*
 	esto es para cuando se pasan los datos por json

@@ -4,7 +4,10 @@
         <label class="miEstilo">Login</label><br><br>
         <input type="email" id="correo" name="email" ng-model="usuario.email" placeholder="Ingrese su email" value=""><br>
         <input type="password" id="clave" minlength="7" ng-model="usuario.password" placeholder="clave" required="true" value=""><br>
-        <button class="button-green" id="login" ng-click="Login()" ng-disabled="myForm.$invalid"><span>Login </span></button>
+        <button class="button-green" id="login" ng-click="Login()" ng-disabled="myForm.$invalid"><span>Login </span></button><br>
+
+        
+        <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id='08fc74e99837e2f15086'">Click here</a> to begin!</a>
       </form>
     </div>
     <h1>Estado: {{myForm.$valid}}</h1>
