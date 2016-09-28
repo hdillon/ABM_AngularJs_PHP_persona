@@ -127,6 +127,51 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
                     }
                 }
             })
+      .state('juegos.agilidadaritmetica1', {
+                url: '/agilidadaritmetica1',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/juegos/AgilidadAritmetica1.html',
+                        controller : 'controlJuegosAgilidadAritmetica1'
+                    }
+                }
+            })
+      .state('juegos.agilidadaritmetica2', {
+                url: '/agilidadaritmetica2',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/juegos/AgilidadAritmetica2.html',
+                        controller : 'controlJuegosAgilidadAritmetica2'
+                    }
+                }
+            })
+      .state('juegos.piedrapapeltijera1', {
+                url: '/piedrapapeltijera1',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/juegos/PiedraPapelTijera1.html',
+                        controller : 'controlJuegosPiedraPapelTijera1'
+                    }
+                }
+            })
+      .state('juegos.piedrapapeltijera2', {
+                url: '/piedrapapeltijera2',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/juegos/PiedraPapelTijera2.html',
+                        controller : 'controlJuegosPiedraPapelTijera2'
+                    }
+                }
+            })
+      .state('juegos.reflejosdaltonicos', {
+                url: '/reflejosdaltonicos',
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/juegos/ReflejosDaltonicos1.html',
+                        controller : 'controlJuegosReflejosDaltonicos1'
+                    }
+                }
+            })
 
              $urlRouterProvider.otherwise('/inicio');
 });

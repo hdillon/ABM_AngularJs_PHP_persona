@@ -1,48 +1,24 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Curso Ingreso UTN FRA</title>
 
-		<!--Estilos-->
-		<link rel="stylesheet" type="text/css" href="../estilo.css">
-		<link rel="stylesheet" type="text/css" href="../animacion.css">
-		<!--final de Estilos-->
-
-		<!--Lógica-Programación-->
-		<script type="text/javascript" src="jsAgilidadAritmetica1.js"></script>
-        <!--Final de Lógica-Programación -->
-		
-
-		</head>
-	<body onload="comenzar()">
-		<div class="CajaUno animated bounceInDown">
+		<div class="CajaUno animated bounceInDown" ng-init="Comenzar()">
 			
-
-			<input type="text" readonly id="PrimerNumero">
-			<input type="text" readonly id="Operador">
-			<input type="text" readonly id="SegundoNumero">
+			<input type="text" readonly ng-model="PrimerNumero">
+			<input type="text" readonly ng-model="operacion">
+			<input type="text" readonly ng-model="SegundoNumero">
 			<form id="FormIngreso">
-				<input type="text"  id="Respuesta">
+				<input type="text"  ng-model="respuesta">
 				<center>
-					<img src="imagenes/interrogacion.jpg" >
+					<img src="img/interrogacion.jpg" >
 				</center>
 				
 			</form>
-			<button  class="MiBotonUTN" onclick="Responder()" >Aceptar</button>
+			<button  class="MiBotonUTN" ng-click="Responder()" >Aceptar</button>
 		</div>
 		<div class="CajaUno animated bounceInLeft">
-			
-
-			
-			
-		
-			
 
 
 		</div>
 
-		<div class="CajaEnunciado animated bounceInLeft">
+		<div class="animated bounceInLeft">
 			<h2>Enunciado:</h2>
 			
 				<h3>
@@ -54,9 +30,3 @@
 			
 			
 		</div>
-
-		<div class="CajaAbajo animated bounceInUp">
-			<a style=" margin-top: -10%;" class="MiBotonUTNLinea" onclick="location.href='index.html'" >Men&uacute; ejercicios</a>	
-		</div>
-	</body>
-</html>

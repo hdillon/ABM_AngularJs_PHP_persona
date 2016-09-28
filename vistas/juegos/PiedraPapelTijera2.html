@@ -1,0 +1,35 @@
+
+<div class="CajaUno animated bounceInDown" ng-init="Comenzar()">
+	
+	Victorias:
+	<input type="text" readonly ng-model="ganadas">
+	Derrotas:
+	<input type="text" readonly ng-model="perdidas">
+	Empates:
+	<input type="text" readonly ng-model="empatadas">
+	<form id="FormIngreso">
+		<center>
+			<img src="img/interrogacion.jpg" >
+		</center>
+		
+	</form>
+	
+</div>
+<div class="CajaUno animated bounceInLeft">
+	
+	<img class="PiedraPapelTijera animated zoomInRight " src="img/piedra.jpg" ng-click="piedra()">
+	<img class="PiedraPapelTijera animated zoomInUp" src="img/papel.jpg" ng-click="papel()">
+	<img class="PiedraPapelTijera animated zoomInLeft"  src="img/tijera.jpg" ng-click="tijera()">
+	<br>
+	<h2>RESULTADO>{{resultado}}</h2>
+
+</div>
+
+<div class="animated bounceInLeft">
+	<h2>Enunciado:</h2>
+	
+		<h3>
+				3.	Piedra, Papel o Tijera (v 2.0):
+				</br>	Ahora debemos informar cuantas veces se ganó, perdió o empató desde la última recarga de página
+		</h3>
+</div>
