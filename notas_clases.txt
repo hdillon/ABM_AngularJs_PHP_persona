@@ -3,13 +3,13 @@
 -cada html esta asociado a 1 controller (podria estar asociado a mas) 
 -las directivas que comienzan con "ng" son de angular
 -las validaciones ahora se van a hacer en el html. al js ya van a llegar validados
--las dos manetas de mostrar los datos del modelo es con {{}} o mediante bindeo con la directiva ng-model
+-las dos maneras de mostrar los datos del modelo es con {{}} o mediante bindeo con la directiva ng-model
 
 
 ************************************************************************************************************
 Link: https://www.mockaroo.com/ generador de data test en formato JSON (entre otros)
 Link: http://www.mocky.io/ : simula el Api rest que retorna el JSON que genera el link anterior.
-Extension de google "CORS" -> para permitir el mocky desde otro server. (HTACCES) y evitar el error "Allow-origin" en console (F12)
+Extension de google "CORS" -> para permitir el mocky desde otro server. (HTACCES) y evitar el error "Allow-origin"
 El parametro del controller "$http", cumple la función de asociarle el link que retorna el JSON.
 Ej.: $http.get('http://www.mocky.io/v2/57c8ab92120000e613e76a8e').
 
@@ -68,11 +68,14 @@ vamos a tener 3 vistas abstractas (una ya la tenemos "persona" a la que le tenem
 La otra vista va a tener "login y registro" que se puede dividir en 2 html (login = dos input text y un boton -- el registro 3= mail pass, pass2 y registrar).
 los botones logear y registrar tienen que disparar un obj json a los controladores.
 el control login va a consultar a la base si esxiste y el registrar va a guardar el usuario.
-Puedo opcionalmente tener el mismo template para login y registro cada uno con su controiller o un solo controler para los 2 templates.
+Puedo opcionalmente tener el mismo template para login y registro cada uno con su controller o un solo controler para los 2 templates.
 
-La tercer vista va a ser una "abstracta de juegos"- hasy que agarrar los juegos en angular,incluir los html en el sitio y apuntarlas con el rooteo.
+La tercer vista va a ser una "abstracta de juegos"- hay que agarrar los juegos en angular,incluir los html en el sitio y apuntarlas con el rooteo.
 La vista juegos va a tener un menu al igual que persona y va a redirigir a los distintos juegos.
 los estilos de c/vista tienen que ser DISTINTOS
 
 La idea principal de todo es tener la logica armada y despues solo cambiando los templates y los ccs me tiene que funcionar.
 
+------------------
+social buttons:
+https://www.npmjs.com/package/bootstrap-social

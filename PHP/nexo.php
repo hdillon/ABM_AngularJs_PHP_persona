@@ -1,8 +1,6 @@
 <?php 
-
 include "clases/Personas.php";
-// $_GET['accion'];
-//var_dump("entro!!");
+
 if ( !empty( $_FILES ) ) 
 {
     $temporal = $_FILES[ 'file' ][ 'tmp_name' ];
@@ -16,9 +14,7 @@ if(isset($_GET['accion']))
 	if($accion=="traer")
 	{
 		$respuesta= array();
-		//$respuesta['listado']=Persona::TraerPersonasTest();
 		$respuesta['listado']=Persona::TraerTodasLasPersonas();
-		//var_dump(Persona::TraerTodasLasPersonas());
 		$arrayJson = json_encode($respuesta);
 		echo  $arrayJson;
 	}
