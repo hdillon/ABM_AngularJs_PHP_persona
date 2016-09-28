@@ -12,8 +12,8 @@
         <input type="text" id="apellido" name="apellido" ng-model="usuario.apellido" placeholder="Ingrese su apellido" required="true"><br>
         <input type="number" id="edad" name="edad" ng-model="usuario.edad" min="18" max="99" placeholder="Ingrese su edad" required="true"><br>
         Sexo: 
-        <input type="radio" name="sexo" id="m" ng-model="usuario.sexo" value="m"> M
-        <input type="radio" name="sexo" id="f" ng-model="usuario.sexo" value="f"> F<br>
+        <input type="radio" name="sexo" ng-model="usuario.sexo" value="m" required> M
+        <input type="radio" name="sexo" ng-model="usuario.sexo" value="f" required> F<br>
         <input type="number" id="dni" name="dni" ng-model="usuario.dni" placeholder="Ingrese su dni" required="true"><br>
         <input type="email" id="email" name="email" ng-model="usuario.email" placeholder="Ingrese su email" required="true"><br>
         <select name="estado" ng-model="usuario.estado" required="true">
