@@ -70,7 +70,7 @@ left:0px;
   padding:6% 4%;
 }
 
-input[type="text"]{
+input[type="text"].estiloUTN{
   width:92%;
   background:#fff;
   margin-bottom:4%;
@@ -80,7 +80,7 @@ input[type="text"]{
   font-size:95%;
   color:#555;
 }
-select{
+select.estiloUTN{
   width:100%;
   background:#fff;
   margin-bottom:4%;

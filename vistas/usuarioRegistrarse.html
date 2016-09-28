@@ -27,9 +27,9 @@
   } else if (date.match(/^\d{4}\-\d{2}$/) !== null) {
      this.value = date + '-';
   }" maxlength="10"><br>
-        <input type="password" id="password" ng-model="usuario.password" placeholder="Ingrese su clave" value=""><br>
-        <input type="password" id="password2" ng-model="usuario.password2" placeholder="Repita su clave" value=""><br>
-        Lenguajes: 
+        <input type="password" name="password" ng-model="usuario.password" placeholder="Ingrese su clave" value="" required="true"><br>
+        <input type="password" name="password2" ng-model="usuario.password2" match="usuario.password" placeholder="Repita su clave" value="" required="true"><br>
+        Lenguajes: <br>
         <input type="checkbox" ng-model="usuario.lenguajeJava" name="java" value="java"> Java
         <input type="checkbox" ng-model="usuario.lenguajeC" name="c" value="c" checked> C#
         <input type="checkbox" ng-model="usuario.lenguajePython" name="python" value="python"> Python<br><br>
@@ -94,5 +94,5 @@
 </form>
 </div>
 
-    <!--<h1>Estado:{{myForm.$valid}}</h1>-->
+    <h1>Estado:{{myForm.$valid}}</h1>
 

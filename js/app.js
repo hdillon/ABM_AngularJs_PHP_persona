@@ -1,5 +1,5 @@
 
-var app = angular.module('ABMangularPHP', ['ui.router', 'ABMangularPHP.controllers', 'satellizer', 'angularFileUpload']);
+var app = angular.module('ABMangularPHP', ['ui.router', 'ABMangularPHP.controllers', 'satellizer', 'angularFileUpload', 'validation.match']);
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
   
