@@ -116,14 +116,31 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
 app.controller('controlUsuarioRegistrarse', function($scope, $http, FileUploader, $state) {
   $scope.DatoTest="**Menu**";
   $scope.titulo="Inicio y presentacion de la WEB";
-
   $scope.usuario={};
   $scope.usuario.nombre= "" ;
   $scope.usuario.dni= "" ;
   $scope.usuario.apellido= "" ;
   $scope.usuario.foto="pordefecto.png";
-
   $scope.uploader=new FileUploader({url:'PHP/nexo.php'});
+  $scope.lenguajes = [{
+          'id':'1',
+          'name':'Java'
+        },{
+          'id':'2',
+          'name':'C#'
+        },{
+          'id':'3',
+          'name':'Python'
+        }];
+  $scope.LenguajesCount = 0;
+
+  $scope.countCheck = function(lenguaje){
+    if(lenguaje.checked){
+      $scope.LenguajesCount--;
+    }else{
+      $scope.LenguajesCount++;
+    }
+  }
   
   $scope.uploader.onSuccessItem=function(item, response, status, headers)
   {

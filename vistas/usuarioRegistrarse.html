@@ -16,7 +16,7 @@
         <input type="radio" name="sexo" id="f" ng-model="usuario.sexo" value="f"> F<br>
         <input type="number" id="dni" name="dni" ng-model="usuario.dni" placeholder="Ingrese su dni" required="true"><br>
         <input type="email" id="email" name="email" ng-model="usuario.email" placeholder="Ingrese su email" required="true"><br>
-        <select ng-model="usuario.estado">
+        <select name="estado" ng-model="usuario.estado" required="true">
           <option value="estado1">Casado</option>
           <option value="estado2">Soltero</option>
         </select><br> 
@@ -30,9 +30,13 @@
         <input type="password" name="password" ng-model="usuario.password" placeholder="Ingrese su clave" value="" required="true"><br>
         <input type="password" name="password2" ng-model="usuario.password2" match="usuario.password" placeholder="Repita su clave" value="" required="true"><br>
         Lenguajes: <br>
-        <input type="checkbox" ng-model="usuario.lenguajeJava" name="java" value="java"> Java
+      <!--  <input type="checkbox" ng-model="usuario.lenguajeJava" name="java" value="java"> Java
         <input type="checkbox" ng-model="usuario.lenguajeC" name="c" value="c" checked> C#
-        <input type="checkbox" ng-model="usuario.lenguajePython" name="python" value="python"> Python<br><br>
+        <input type="checkbox" ng-model="usuario.lenguajePython" name="python" value="python"> Python<br><br> -->
+        <label class="checkbox-inline" ng-repeat="lenguaje in lenguajes">
+        <input type="checkbox" name="lenguajes" ng-model="lenguaje.checked" ng-click="countCheck(lenguaje)">{{lenguaje.name}}
+        </label>
+        <br><span style="color:red"  ng-show="LenguajesCount==0">Debe seleccionar al menos 1 lenguaje!</span>
 
 <div>
     <h3>Select files</h3>
@@ -90,7 +94,7 @@
     </tbody>
 </table>
 
-<button  class="button-green" name="login" id="login" ng-disabled="myForm.$invalid || usuario.password!=usuario.password2" ng-click="Guardar()"><span>Registrarse </span></button>
+<button  class="button-green" name="login" id="login" ng-disabled="myForm.$invalid || usuario.password!=usuario.password2 || LenguajesCount==0" ng-click="Guardar()"><span>Registrarse </span></button>
 </form>
 </div>
 

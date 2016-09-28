@@ -3,6 +3,19 @@ input.ng-invalid {
     background-color: pink;
 }
 
+input.ng-valid {
+    background-color:#7FFFD4;
+}
+
+
+select.ng-invalid {
+    background-color:pink;
+}
+select.ng-valid {
+    background-color:#7FFFD4;
+}
+
+
 
 /***************************/
 body{
