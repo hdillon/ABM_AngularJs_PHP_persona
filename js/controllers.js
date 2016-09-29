@@ -2,6 +2,7 @@ angular.module('ABMangularPHP.controllers', [])
 
 app.controller('controlPersonaMenu', function($scope, $http) {
   $scope.DatoTest="**Menu**";
+
 });
 
 app.controller('controlMenu', function($scope, $http) {
@@ -19,28 +20,23 @@ app.controller('controlInicio', function($scope, $http) {
 });
 
 
-app.controller('controlPersona', function($scope, $http, $auth) {
+app.controller('controlPersona', function($scope, $http, $auth, $state) {
    if(!$auth.isAuthenticated())
    {
     $scope.DatoTest="**NO TOKEN**";
-    $scope.titulo="Debe iniciar sesion";
-   }else{
-    $scope.DatoTest="**Menu**";
-    $scope.titulo="Inicio y presentacion de la WEB";
+    alert("Debe iniciar sesion!");
+    $state.go("inicio");
    }
-    
 
 });
-app.controller('controlPersonaAlta', function($scope, $http) {
+app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $state) {
   $scope.DatoTest="**alta**";
-
-//inicio las variables
   $scope.persona={};
   $scope.persona.nombre;
- $scope.persona.dni;
+  $scope.persona.dni;
   $scope.persona.apellido;
   $scope.persona.foto;
-
+  $scope.uploader=new FileUploader({url:'PHP/nexo.php'});
 
   $scope.Guardar=function(){
 
@@ -48,7 +44,7 @@ app.controller('controlPersonaAlta', function($scope, $http) {
     console.log("persona a guardar:");
     console.log($scope.persona);
 
-    /*
+    
     $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.persona}})
     .then(function(respuesta) {       
          //aca se ejetuca si retorno sin errores        
@@ -58,10 +54,24 @@ app.controller('controlPersonaAlta', function($scope, $http) {
         //aca se ejecuta cuando hay errores
         console.log( response);           
     });
-
-  */
-
   }
+
+  $scope.uploader.onSuccessItem=function(item, response, status, headers)
+  {
+    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.usuario}})
+    .then(function(respuesta) {       
+       //aca se ejetuca si retorno sin errores        
+     console.info("respuesta", respuesta.data);
+     $state.go("inicio");
+
+  },function errorCallback(response) {        
+      //aca se ejecuta cuando hay errores
+      console.log( response);           
+    });
+
+  console.info("Ya guardé el archivo.", item, response, status, headers);
+  };
+
 });
 
 app.controller('controlUsuario', function($scope, $http) {
@@ -81,8 +91,14 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
   $scope.usuario.password = "claveju66i6u7";
 
   $scope.authenticate = function(provider) {
-      $auth.authenticate(provider);
-    };
+      $auth.authenticate(provider)
+      .then(function(response) {
+        console.log("login con github!");
+      })
+      .catch(function(response) {
+        console.log("rompió github!");
+      });
+    }
 
   /*if($auth.isAuthenticated())
     console.info("token", $auth.getPayload());
@@ -173,7 +189,7 @@ app.controller('controlUsuarioRegistrarse', function($scope, $http, FileUploader
 
 });
 
-app.controller('controlPersonaGrilla', function($scope, $http) {
+app.controller('controlPersonaGrilla', function($scope, $http, $state) {
     $scope.DatoTest="**grilla**";
   
   /*$http.get('http://www.mocky.io/v2/57c82b3a1200008404e769ad')
@@ -187,18 +203,22 @@ app.controller('controlPersonaGrilla', function($scope, $http) {
         console.log( error);
         
    });*/
-  $http.get('PHP/nexo.php', { params: {accion :"traer"}})
-  .then(function(respuesta) {       
 
-         $scope.ListadoPersonas = respuesta.data.listado;
-         console.log(respuesta.data);
+  $scope.Traer=function(){
+    $http.get('PHP/nexo.php', { params: {accion :"traer"}})
+    .then(function(respuesta) {       
 
-    },function errorCallback(response) {
-         $scope.ListadoPersonas= [];
-        console.log( response);
-        
-   });
+           $scope.ListadoPersonas = respuesta.data.listado;
+           console.log(respuesta.data);
 
+      },function errorCallback(response) {
+           $scope.ListadoPersonas= [];
+          console.log( response);
+          
+     });
+  }
+
+  $scope.Traer();
   /*
 
           https://docs.angularjs.org/api/ng/service/$http
@@ -217,16 +237,17 @@ app.controller('controlPersonaGrilla', function($scope, $http) {
              the error callback will not be called for such responses.
    */
   $scope.Borrar=function(persona){
-    console.log("borrar"+persona);
+    console.log("borrar"+persona.id);
 
 
 
-/*$http.post("PHP/nexo.php",{accion :"borrar",persona:persona},{headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+$http.post("PHP/nexo.php",{ datos:{accion :"borrar", persona:persona, headers: {'Content-Type': 'application/x-www-form-urlencoded'}}})
 .success(function(data, status, headers, config) {
     console.log("bien"+data);
+    $scope.Traer();
   }).error(function(data, status, headers, config) {
      console.log("mal"+data);
-});*/
+});
 
 
 /*
