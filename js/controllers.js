@@ -36,10 +36,10 @@ app.controller('controlPersonaAlta', function($scope, $http) {
 
 //inicio las variables
   $scope.persona={};
-  $scope.persona.nombre= "natalia" ;
- $scope.persona.dni= "444412312" ;
-  $scope.persona.apellido= "natalia" ;
-  $scope.persona.foto="sinfoto";
+  $scope.persona.nombre;
+ $scope.persona.dni;
+  $scope.persona.apellido;
+  $scope.persona.foto;
 
 
   $scope.Guardar=function(){

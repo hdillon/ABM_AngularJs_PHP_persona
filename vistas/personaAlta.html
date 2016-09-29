@@ -6,56 +6,36 @@
 			<h1> titulo </h1>
 
 			<form name="FormIngreso" id="FormIngreso"  enctype="multipart/form-data" novalidate >
-				<label  >visualizador: {{FormIngreso.$invalid}}</label>
+				<label  >visualizador</label>
 				<input type="checkbox" ng-model="verdatos" value="verdatos"> <br>
+				<label  >Form válido: {{!FormIngreso.$invalid}}</label> <br>
 
-
-				<!--Campos necesarios:
-						http://www.w3schools.com/angular/angular_validation.asp
-
-						nombre:
-						apellido:
-						edad:(number)
-						sexo:(radio button).
-						dni:(number)
-						mail:(email)
-						estado civil:(select-option)
-						fecha nacimiento:(date)
-						clave:(password)
-						copia de clave:(password)
-						lenguajes de programacion(checkbox): c,c#, javaScript,PHP,vb.Net
-
-				-->
-				<label  >Apellido : {{FormIngreso.$invalid}}</label><br>
-				<input type="text" name="apellido" ng-model="persona.apellido" placeholder="ingrese apellido" value=""  required/><br>
+				<label  >Apellido:</label><br>
+				<input type="text" name="apellido" ng-model="persona.apellido" placeholder="ingrese apellido" value=""  required/>
 				<span id="lblApellido" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*
 				</span><br>
 
-				<label  >Nombre:</label>
-				<input type="text"  ng-model="persona.nombre" placeholder="ingrese nombre" value="" /> <span id="lblNombre" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span><br>
+				<label  >Nombre:</label><br>
+				<input type="text"  ng-model="persona.nombre" placeholder="ingrese nombre" value="" required/> <span id="lblNombre" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span><br>
 
-				<label  >edad:</label>
-				<input type="text"  ng-model="persona.edad" placeholder="ingrese edad" value=""     /> 
+				<label  >Edad:</label><br>
+				<input type="number"  ng-model="persona.edad" placeholder="ingrese edad" value="" required/> 
 				<span id="lblDni" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span><br>
 
 
 				<label  >sexo:</label><br>
-				 <input type="radio" ng-model="persona.sexo" value="Masculino"><label  >Masculino</label> <br>
-				 <input type="radio" ng-model="persona.sexo" value="Femenino"> <label  >Femenino</label><br>
-				 <input type="radio" ng-model="persona.sexo" value="other"><label  >Otro</label> <br>
+				 <input type="radio" ng-model="persona.sexo" value="Masculino" required><label  >Masculino</label> 
+				 <input type="radio" ng-model="persona.sexo" value="Femenino" required> <label  >Femenino</label>
+				 <input type="radio" ng-model="persona.sexo" value="other" required><label  >Otro</label><br>
 
 
-				<span id="lblDni" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span>
-
-				<label  >Dni:</label>
-				<input type="text" name="dni" ng-model="persona.dni" placeholder="ingrese dni" value=""     /> 
+				<label  >Dni:</label><br>
+				<input type="number" name="dni" ng-model="persona.dni" placeholder="ingrese dni" value=""  required/> 
 				<span id="lblDni" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span><br>
 
-				<label  >mail:</label>
-				<input type="email"  ng-model="persona.correo" placeholder="ingrese correo electronico" /> 
+				<label  >mail:</label><br>
+				<input type="email"  ng-model="persona.correo" placeholder="ingrese correo electronico" required/> 
 				<span ng-if="">*</span><br>
-
-				<p style='color: black;'>	{{ persona.nombre + persona.apellido }}*El DNI nosss se modificar.</p> 
 			
 				<input type="hidden" name="idOculto" id="id" value="" />
 				<!--
