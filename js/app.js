@@ -12,7 +12,8 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       clientId: '08fc74e99837e2f15086',
       url: '/auth/github',
       authorizationEndpoint: 'https://github.com/login/oauth/authorize',
-      redirectUri: window.location.origin,
+      //redirectUri: window.location.origin,
+      redirectUri: "http://localhost:8080/ABM_AngularJs_PHP_persona/index.html", // Esta URL debe coincidir con la seteada en la pág. de GitHub: opción: Authorization callback URL
       optionalUrlParams: ['scope'],
       scope: ['user:email'],
       scopeDelimiter: ' ',

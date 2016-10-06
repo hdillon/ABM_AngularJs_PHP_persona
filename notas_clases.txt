@@ -79,3 +79,8 @@ La idea principal de todo es tener la logica armada y despues solo cambiando los
 ------------------
 social buttons:
 https://www.npmjs.com/package/bootstrap-social
+
+
+-------------------------------
+Clase 7 API_REST
+

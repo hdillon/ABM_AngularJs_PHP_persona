@@ -21,12 +21,12 @@ app.controller('controlInicio', function($scope, $http) {
 
 
 app.controller('controlPersona', function($scope, $http, $auth, $state) {
-   if(!$auth.isAuthenticated())
+   /*if(!$auth.isAuthenticated())
    {
     $scope.DatoTest="**NO TOKEN**";
     alert("Debe iniciar sesion!");
     $state.go("inicio");
-   }
+   }*/
 
 });
 app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $state) {
@@ -205,10 +205,11 @@ app.controller('controlPersonaGrilla', function($scope, $http, $state) {
    });*/
 
   $scope.Traer=function(){
-    $http.get('PHP/nexo.php', { params: {accion :"traer"}})
+    //$http.get('PHP/nexo.php', { params: {accion :"traer"}})
+    $http.get('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/personas')
     .then(function(respuesta) {       
-
-           $scope.ListadoPersonas = respuesta.data.listado;
+      console.info("RESPUESTA", respuesta);
+           $scope.ListadoPersonas = respuesta.data;
            console.log(respuesta.data);
 
       },function errorCallback(response) {
