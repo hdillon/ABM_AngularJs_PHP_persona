@@ -44,17 +44,19 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
     console.log("persona a guardar:");
     console.log($scope.persona);
 
-    
-    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.persona}})
+    //console.info("DATO gasfas: " , JSON.stringify($scope.persona));
+    $http.post('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/alta/' + JSON.stringify($scope.persona))
     .then(function(respuesta) {       
          //aca se ejetuca si retorno sin errores        
-         console.log(respuesta.data);
+         console.info(respuesta);
 
     },function errorCallback(response) {        
         //aca se ejecuta cuando hay errores
-        console.log( response);           
+        console.info( response);           
     });
   }
+
+  //$args['id']
 
   $scope.uploader.onSuccessItem=function(item, response, status, headers)
   {
@@ -96,7 +98,7 @@ app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
         console.log("login con github!");
       })
       .catch(function(response) {
-        console.log("rompió github!");
+        console.info("RESPUESTA",response);
       });
     }
 
@@ -239,15 +241,15 @@ app.controller('controlPersonaGrilla', function($scope, $http, $state) {
    */
   $scope.Borrar=function(persona){
     console.log("borrar"+persona.id);
+    console.info(persona);
 
-
-
-$http.post("PHP/nexo.php",{ datos:{accion :"borrar", persona:persona, headers: {'Content-Type': 'application/x-www-form-urlencoded'}}})
+//MANERA DE PASAR UN OBJETO POR POST AL WEB SERVICE
+$http.delete('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/personas/' + JSON.stringify(persona.id))
 .success(function(data, status, headers, config) {
-    console.log("bien"+data);
+    console.info("FUNCIONA: " , data);
     $scope.Traer();
   }).error(function(data, status, headers, config) {
-     console.log("mal"+data);
+     console.info("FALLA: " , data);
 });
 
 

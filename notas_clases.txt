@@ -84,3 +84,9 @@ https://www.npmjs.com/package/bootstrap-social
 -------------------------------
 Clase 7 API_REST
 
+Agregar el acceso a datos, la clase persona y retornan lo que devuelve el método estático 	
+http.get: traer listado
+http.get: traer un objeto
+http.post: alta
+http.puto: modificar
+http.delete: borrar 
