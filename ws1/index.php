@@ -57,9 +57,9 @@ $app->get('/usuario[/{id}[/{name}]]', function ($request, $response, $args) {
 /* FORMA DE RECIBIR POR PARAMETROS UN OBJETO EN POST
     POST: Para crear recursos */
 $app->post('/alta/{objeto}', function ($request, $response, $args) {
-    //$persona = json_encode($args['objeto']);
-    //$datos = Persona::InsertarPersona($persona);
-    $response->write("Persona insertada! ", $args['objeto']);
+    $persona = json_decode($args['objeto']);
+    $datos = Persona::InsertarPersona($persona);
+    $response->write($datos);
     //$response->write("Welcome to Slim!");
 
     //$datos = Persona::InsertarPersona();
