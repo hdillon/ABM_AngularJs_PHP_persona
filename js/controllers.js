@@ -32,10 +32,12 @@ app.controller('controlPersona', function($scope, $http, $auth, $state) {
 app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $state) {
   $scope.DatoTest="**alta**";
   $scope.persona={};
-  $scope.persona.nombre;
-  $scope.persona.dni;
-  $scope.persona.apellido;
-  $scope.persona.foto;
+  $scope.persona.nombre = "Horacio";
+  $scope.persona.dni = 34551422;
+  $scope.persona.apellido = "Dillon";
+  $scope.persona.edad = 27;
+  $scope.persona.correo = "a@a";
+  $scope.persona.foto = "fotoo";
   $scope.uploader=new FileUploader({url:'PHP/nexo.php'});
 
   $scope.Guardar=function(){
@@ -45,7 +47,7 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
     console.log($scope.persona);
 
     //console.info("DATO gasfas: " , JSON.stringify($scope.persona));
-    $http.post('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/alta/' + JSON.stringify($scope.persona))
+    $http.post('http://localhost:80/ABM_AngularJs_PHP_persona/ws1/alta/' + JSON.stringify($scope.persona))
     .then(function(respuesta) {       
          //aca se ejetuca si retorno sin errores        
          console.info(respuesta);
@@ -64,7 +66,6 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
     .then(function(respuesta) {       
        //aca se ejetuca si retorno sin errores        
      console.info("respuesta", respuesta.data);
-     $state.go("inicio");
 
   },function errorCallback(response) {        
       //aca se ejecuta cuando hay errores
@@ -208,7 +209,7 @@ app.controller('controlPersonaGrilla', function($scope, $http, $state) {
 
   $scope.Traer=function(){
     //$http.get('PHP/nexo.php', { params: {accion :"traer"}})
-    $http.get('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/personas')
+    $http.get('http://localhost:80/ABM_AngularJs_PHP_persona/ws1/personas')
     .then(function(respuesta) {       
       console.info("RESPUESTA", respuesta);
            $scope.ListadoPersonas = respuesta.data;
@@ -244,7 +245,7 @@ app.controller('controlPersonaGrilla', function($scope, $http, $state) {
     console.info(persona);
 
 //MANERA DE PASAR UN OBJETO POR POST AL WEB SERVICE
-$http.delete('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/personas/' + JSON.stringify(persona.id))
+$http.delete('http://localhost:80/ABM_AngularJs_PHP_persona/ws1/personas/' + JSON.stringify(persona.id))
 .success(function(data, status, headers, config) {
     console.info("FUNCIONA: " , data);
     $scope.Traer();
