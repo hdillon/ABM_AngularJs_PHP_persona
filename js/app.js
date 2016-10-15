@@ -21,6 +21,20 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       popupOptions: { width: 1020, height: 618 }
     });
 
+  $authProvider.google({
+  url: '/auth/google',
+  authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+  redirectUri: window.location.origin,
+  requiredUrlParams: ['scope'],
+  optionalUrlParams: ['display'],
+  scope: ['profile', 'email'],
+  scopePrefix: 'openid',
+  scopeDelimiter: ' ',
+  display: 'popup',
+  oauthType: '2.0',
+  popupOptions: { width: 452, height: 633 }
+  });
+
   $stateProvider
 
       .state('inicio', {
