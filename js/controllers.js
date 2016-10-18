@@ -21,14 +21,10 @@ app.controller('controlInicio', function($scope, $http) {
 
 
 app.controller('controlPersona', function($scope, $http, $auth, $state) {
-   /*if(!$auth.isAuthenticated())
-   {
-    $scope.DatoTest="**NO TOKEN**";
-    alert("Debe iniciar sesion!");
-    $state.go("inicio");
-   }*/
 
 });
+
+
 app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $state) {
   $scope.persona={};
   $scope.persona.nombre = "Horacio";
@@ -42,41 +38,39 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
   $scope.Guardar=function(){
     console.log("persona a guardar:");
     console.log($scope.persona);
-    //console.info("DATO gasfas: " , JSON.stringify($scope.persona));
     $http.post('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/alta/' + JSON.stringify($scope.persona))
-    .then(function(respuesta) {       
-         //aca se ejetuca si retorno sin errores        
+    .then(function(respuesta) {        
          console.info(respuesta);
     },function errorCallback(response) {        
-        //aca se ejecuta cuando hay errores
         console.info( response);           
     });
   }
 
   $scope.uploader.onSuccessItem=function(item, response, status, headers)
   {
-    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.usuario}})
-    .then(function(respuesta) {       
-       //aca se ejetuca si retorno sin errores        
+    console.info("ITEM", item);
+    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.persona}})
+    .then(function(respuesta) {         
      console.info("respuesta", respuesta.data);
-
+     //console.info("Ya guardé el archivo.", item, response, status, headers);
   },function errorCallback(response) {        
-      //aca se ejecuta cuando hay errores
       console.log( response);           
     });
-
-  console.info("Ya guardé el archivo.", item, response, status, headers);
+    
   };
 
 });
+
 
 app.controller('controlUsuario', function($scope, $http) {
   $scope.titulo="Inicio y presentacion de la WEB"
 });
 
+
 app.controller('controlUsuarioMenu', function($scope, $http) {
   $scope.titulo="Inicio y presentacion de la WEB"
 });
+
 
 app.controller('controlUsuarioLogin', function($scope, $http, $auth) {
   $scope.usuario = {};
