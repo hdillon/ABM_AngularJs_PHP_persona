@@ -1,5 +1,5 @@
 
-var app = angular.module('ABMangularPHP', ['ui.router', 'ABMangularPHP.controllers', 'satellizer', 'angularFileUpload', 'validation.match']);
+var app = angular.module('ABMangularPHP', ['ui.router', 'ABMangularPHP.controllers', 'ABMangularPHP.controllersJuegos', 'satellizer', 'angularFileUpload', 'validation.match']);
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
   
@@ -22,17 +22,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     });
 
   $authProvider.google({
-  url: '/auth/google',
-  authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-  redirectUri: window.location.origin,
-  requiredUrlParams: ['scope'],
-  optionalUrlParams: ['display'],
-  scope: ['profile', 'email'],
-  scopePrefix: 'openid',
-  scopeDelimiter: ' ',
-  display: 'popup',
-  oauthType: '2.0',
-  popupOptions: { width: 452, height: 633 }
+      url: '/auth/google',
+      authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+      redirectUri: window.location.origin,
+      requiredUrlParams: ['scope'],
+      optionalUrlParams: ['display'],
+      scope: ['profile', 'email'],
+      scopePrefix: 'openid',
+      scopeDelimiter: ' ',
+      display: 'popup',
+      oauthType: '2.0',
+      popupOptions: { width: 452, height: 633 }
   });
 
   $stateProvider

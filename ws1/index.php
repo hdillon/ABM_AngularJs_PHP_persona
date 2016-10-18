@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');  
 /**
  * Step 1: Require the Slim Framework using Composer's autoloader
  *
