@@ -67,6 +67,18 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
                     }
                 }
             })
+      .state('persona.modificar', {
+                url: '/modificar',
+                params: {
+                  objPersona: null
+                },
+                views: {
+                    'contenido': {
+                        templateUrl: 'vistas/personaModificar.html',
+                        controller : 'controlPersonaModificar'
+                    }
+                }
+            })
       .state('persona.grilla', {
                 url: '/grilla',
                 views: {

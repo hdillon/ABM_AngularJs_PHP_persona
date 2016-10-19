@@ -77,6 +77,7 @@ if(isset($_GET['accion']))
 				$rutaNueva=$milliseconds."-".$respuesta->datos->persona->dni.".".PATHINFO($rutaVieja, PATHINFO_EXTENSION);
 				copy($rutaVieja, "../fotos/".$rutaNueva);
 				unlink($rutaVieja);
+				$respuesta->datos->persona->foto=$rutaNueva;
 			}
 			break;
 		}

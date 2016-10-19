@@ -41,6 +41,7 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
     $http.post('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/alta/' + JSON.stringify($scope.persona))
     .then(function(respuesta) {        
          console.info(respuesta);
+         $state.go('persona.grilla');
     },function errorCallback(response) {        
         console.info( response);           
     });
@@ -54,11 +55,53 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
     $http.post('PHP/nexo.php', { datos: {accion :"uploadFoto",persona:$scope.persona}})
     .then(function(respuesta) {         
      console.info("respuesta", respuesta.data);
-     $scope.persona.foto = "pordefecto.jpg";
+     //$scope.persona.foto = "pordefecto.jpg";
      //console.info("Ya guardé el archivo.", item, response, status, headers);
   },function errorCallback(response) {        
       console.log( response);   
-      $scope.persona.foto = "pordefecto.jpg";        
+      //$scope.persona.foto = "pordefecto.jpg";        
+    });
+    
+  };
+
+});
+
+
+app.controller('controlPersonaModificar', function($scope, $http, FileUploader, $state, $stateParams) {
+  console.info("PARAMS", $stateParams.objPersona);
+  $scope.persona={};
+  $scope.persona.id = Number($stateParams.objPersona.id);
+  $scope.persona.nombre = $stateParams.objPersona.nombre;
+  $scope.persona.dni = Number($stateParams.objPersona.dni);
+  $scope.persona.apellido = $stateParams.objPersona.apellido;
+  $scope.persona.foto = "pordefecto.jpg";
+  $scope.uploader=new FileUploader({url:'PHP/nexo.php'});
+
+  $scope.Modificar=function(){
+    console.log("persona a Modificar:");
+    console.log($scope.persona);
+    $http.put('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/modificar/' + JSON.stringify($scope.persona))
+    .then(function(respuesta) {        
+         console.info("MODIFICÓ BIEN", respuesta);
+         $state.go('persona.grilla');
+    },function errorCallback(response) {        
+        console.info("MODIFICÓ MAL", response);           
+    });
+  }
+
+  $scope.uploader.onSuccessItem=function(item, response, status, headers)
+  {
+    //OBTENGO EL NOMBRE DE LA FOTO EN EL MOMENTO DEL UPLOAD:
+    console.info("ITEM", item._file.name);
+    $scope.persona.foto = item._file.name;
+    $http.post('PHP/nexo.php', { datos: {accion :"uploadFoto",persona:$scope.persona}})
+    .then(function(respuesta) {         
+     console.info("respuesta", respuesta.data);
+     //$scope.persona.foto = "pordefecto.jpg";
+     //console.info("Ya guardé el archivo.", item, response, status, headers);
+  },function errorCallback(response) {        
+      console.log( response);   
+      //$scope.persona.foto = "pordefecto.jpg";        
     });
     
   };
@@ -67,12 +110,12 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
 
 
 app.controller('controlUsuario', function($scope, $http) {
-  $scope.titulo="Inicio y presentacion de la WEB"
+
 });
 
 
 app.controller('controlUsuarioMenu', function($scope, $http) {
-  $scope.titulo="Inicio y presentacion de la WEB"
+
 });
 
 
@@ -212,8 +255,6 @@ app.controller('controlPersonaGrilla', function($scope, $http, $state) {
   $scope.Traer();
 
   $scope.Borrar=function(persona){
-    console.log("borrar"+persona.id);
-    console.info(persona);
     $http.delete('http://localhost:8080/ABM_AngularJs_PHP_persona/ws1/personas/' + JSON.stringify(persona.id))
     .success(function(data, status, headers, config) {
         console.info("FUNCIONA: " , data);
@@ -223,9 +264,8 @@ app.controller('controlPersonaGrilla', function($scope, $http, $state) {
     });
   }
 
-  $scope.Modificar=function(id){
-    
-    console.log("Modificar"+id);
+  $scope.Modificar=function(persona){
+    $state.go('persona.modificar', {objPersona:persona});
   }
 
 });

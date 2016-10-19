@@ -88,7 +88,7 @@ Agregar el acceso a datos, la clase persona y retornan lo que devuelve el métod
 http.get: traer listado
 http.get: traer un objeto
 http.post: alta
-http.puto: modificar
+http.put: modificar
 http.delete: borrar 
 
 

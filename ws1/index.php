@@ -68,9 +68,11 @@ $app->post('/alta/{objeto}', function ($request, $response, $args) {
 });
 
 // /* PUT: Para editar recursos */
-$app->put('/usuario/{id}', function ($request, $response, $args) {
-    $response->write("Welcome to Slim!");
-    var_dump($args);
+$app->put('/modificar/{objeto}', function ($request, $response, $args) {
+    $persona = json_decode($args['objeto']);
+    $datos = Persona::ModificarPersona($persona);
+    $response->write($datos);
+    //var_dump($args);
     return $response;
 });
 
