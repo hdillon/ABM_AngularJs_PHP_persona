@@ -32,7 +32,7 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
   $scope.persona.apellido = "Dillon";
   $scope.persona.edad = 27;
   $scope.persona.correo = "a@a";
-  $scope.persona.foto = "fotoo";
+  $scope.persona.foto = "pordefecto.jpg";
   $scope.uploader=new FileUploader({url:'PHP/nexo.php'});
 
   $scope.Guardar=function(){
@@ -48,13 +48,17 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
 
   $scope.uploader.onSuccessItem=function(item, response, status, headers)
   {
-    console.info("ITEM", item);
-    $http.post('PHP/nexo.php', { datos: {accion :"insertar",persona:$scope.persona}})
+    //OBTENGO EL NOMBRE DE LA FOTO EN EL MOMENTO DEL UPLOAD:
+    console.info("ITEM", item._file.name);
+    $scope.persona.foto = item._file.name;
+    $http.post('PHP/nexo.php', { datos: {accion :"uploadFoto",persona:$scope.persona}})
     .then(function(respuesta) {         
      console.info("respuesta", respuesta.data);
+     $scope.persona.foto = "pordefecto.jpg";
      //console.info("Ya guardé el archivo.", item, response, status, headers);
   },function errorCallback(response) {        
-      console.log( response);           
+      console.log( response);   
+      $scope.persona.foto = "pordefecto.jpg";        
     });
     
   };
