@@ -67,6 +67,7 @@ app.controller('controlPersonaAlta', function($scope, $http, FileUploader, $stat
 });
 
 
+
 app.controller('controlPersonaModificar', function($scope, $http, FileUploader, $state, $stateParams) {
   console.info("PARAMS", $stateParams.objPersona);
   $scope.persona={};
